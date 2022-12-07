@@ -3,6 +3,10 @@
 
 Minimal site for free streaming anime series and movies 
 
+# Demo
+
+
+https://user-images.githubusercontent.com/79091272/206247907-76c0346c-c6e6-4434-aba1-b0505cf2915e.mp4
 
 
 
