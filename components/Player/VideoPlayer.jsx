@@ -25,7 +25,7 @@ const VideoPlayer = ({ videoSource }) => {
 
   useEffect(() => {
     const videoJsOptions = {
-      autoplay: false,
+      autoplay: true,
       controls: true,
       fluid: true,
       muted: false,
