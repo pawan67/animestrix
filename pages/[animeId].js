@@ -8,14 +8,10 @@ import { getAnimeDetails } from "../src/handlers";
 
 function AnimeDetailsPage() {
   const router = useRouter();
-  const { animeId } = router.query;
-  if (!animeId) {
-    return (
-      <MainLayout>
-        <Loading />
-      </MainLayout>
-    );
-  }
+  // const { animeId } = router.query;
+
+  // get the anime id from the url with javascript
+  const animeId = window.location.pathname.split("/")[1];
 
   const { data, isLoading, isError, error } = useQuery("animeDetails", () =>
     getAnimeDetails(animeId)

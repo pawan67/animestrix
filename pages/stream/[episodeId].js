@@ -12,11 +12,15 @@ import { FcVlc } from "react-icons/fc";
 import Loading from "../../components/small-components/Loading";
 function StreamingPage() {
   const router = useRouter();
-  const { episodeId } = router.query;
+  // const { episodeId } = router.query;
 
-  if (!episodeId) {
-    return <MainLayout>loading...</MainLayout>;
-  }
+  // get the search id from the url with javascript
+
+  const episodeId = window.location.pathname.split("/")[2];
+
+  // if (!episodeId) {
+  //   return <MainLayout>loading...</MainLayout>;
+  // }
 
   const { data, isLoading, isError, error } = useQuery("details", () =>
     getStreamLink(episodeId)

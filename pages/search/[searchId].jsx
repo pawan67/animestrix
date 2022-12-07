@@ -8,16 +8,18 @@ import { getAnimeSearch, getPopularAnime } from "../../src/handlers";
 
 function SearchPage() {
   const router = useRouter();
-  const { searchId } = router.query;
-  if (!searchId) {
-    return (
-      <MainLayout>
-        <Loading />
-      </MainLayout>
-    );
-  }
+  // const { searchId } = router.query;
 
-  
+  // get the search id from the url with javascript
+  const searchId = window.location.pathname.split("/")[2];
+
+  // if (!searchId) {
+  //   return (
+  //     <MainLayout>
+  //       <Loading />
+  //     </MainLayout>
+  //   );
+  // }
 
   const { data, isLoading, isError, error } = useQuery("searchedAnime", () =>
     getAnimeSearch(searchId)

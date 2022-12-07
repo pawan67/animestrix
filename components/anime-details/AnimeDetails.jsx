@@ -45,8 +45,8 @@ function AnimeDetails({ data }) {
             <h4 className=" font-semibold">Genres</h4>
           </div>
           <div className=" mt-3 flex gap-2 flex-wrap">
-            {genres.map((genre) => (
-              <TextButtons text={genre} />
+            {genres?.map((genre, i) => (
+              <TextButtons key={i} text={genre} />
             ))}
           </div>
         </div>
@@ -55,8 +55,9 @@ function AnimeDetails({ data }) {
       <div>
         <h2 className=" font-semibold mt-10">Episodes</h2>
         <div className=" mt-5 flex  flex-wrap  gap-3">
-          {episodesList.map((episode) => (
+          {episodesList?.map((episode, i) => (
             <TextButtons
+              key={i}
               link={`/stream/${episode.episodeId}`}
               text={episode.episodeNum}
             />
