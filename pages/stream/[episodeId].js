@@ -53,7 +53,7 @@ function StreamingPage() {
           <div className=" w-full max-w-screen-xl">
             <VideoPlayer videoSource={data?.sources[0].file} />
             <div className=" mt-5">
-              <h2 className=" uppercase font-bold">{episodeId}</h2>
+              <h3 className=" capitalize ">{episodeId}</h3>
             </div>
           </div>
 

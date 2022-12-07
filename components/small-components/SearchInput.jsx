@@ -15,9 +15,9 @@ function SearchInput({ isLandingPage = false }) {
       onSubmit={handleSubmit}
       className={` ${
         isLandingPage
-          ? "bg-secondary w-[400px]"
+          ? "bg-secondary sm:w-[400px]"
           : "bg-primary-light sm:w-[350px]"
-      } w-full  h-10`}
+      }   h-10`}
     >
       <input
         value={search}
