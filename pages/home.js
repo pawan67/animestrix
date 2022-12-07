@@ -5,14 +5,11 @@ import Card from "../components/small-components/Card";
 import Loading from "../components/small-components/Loading";
 import { getPopularAnime } from "../src/handlers";
 
-const home = () => {
+const Home = () => {
   const { data, isLoading, isError, error } = useQuery(
     "popularAnime",
     getPopularAnime
   );
-
-  console.log(data);
-  console.log(error);
 
   return (
     <MainLayout>
@@ -34,4 +31,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
