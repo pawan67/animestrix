@@ -1,12 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
-import LandingPage from "../components/LandingPage";
+import React from "react";
+import Footer from "./Footer";
+import Header from "./Header";
 
-import styles from "../styles/Home.module.css";
-
-export default function Home() {
+function MainLayout({ children }) {
   return (
-    <div>
+    <div className="  bg-background">
       <Head>
         <title>Animestrix - Minimal anime streaming site</title>
         <meta
@@ -51,7 +50,15 @@ export default function Home() {
           content="https://i.imgur.com/xO0ViM0.png"
         />
       </Head>
-      <LandingPage />
+      <Header />
+      <div className=" flex ">
+        <div className="  z-10 w-full   px-5 sm:px-10 min-h-[90vh]  mt-[103px] md:mt-28 ">
+          {children}
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }
+
+export default MainLayout;
