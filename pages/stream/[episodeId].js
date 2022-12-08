@@ -53,10 +53,10 @@ function StreamingPage() {
       {isLoading && <Loading />}
       {data && (
         <div className=" lg:flex lg:space-x-4">
-          <div className=" w-full overflow-hidden max-w-screen-xl">
+          <div className=" alignfull w-full overflow-hidden max-w-screen-xl">
             {isExternalPlayer ? (
               <iframe
-                className=" overflow-hidden aspect-[5/3]   sm:aspect-video w-full h-full"
+                className=" overflow-hidden aspect-[5/4]   sm:aspect-video w-full h-full"
                 src={data.Referer}
                 allowFullScreen
                 frameborder="0"
@@ -64,10 +64,13 @@ function StreamingPage() {
             ) : (
               <VideoPlayer videoSource={data?.sources[0].file} />
             )}
-
-            <div className=" mt-5">
-              <h3 className=" capitalize ">{episodeId}</h3>
+            
+            <div className="  hidden sm:block mt-5">
+              <h3 className="  capitalize ">{episodeId}</h3>
             </div>
+          </div>
+          <div className=" sm:hidden  mt-5">
+            <h3 className=" capitalize ">{episodeId}</h3>
           </div>
 
           <div className=" mt-5 lg:mt-0 space-y-4">
