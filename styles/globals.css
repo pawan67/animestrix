@@ -57,3 +57,16 @@ p{
   }
   
 
+  
+  @media only screen and (max-width: 600px){
+
+    .alignfull {
+  
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      max-width: 1000%;
+      width: auto;
+    }
+  }
+
+

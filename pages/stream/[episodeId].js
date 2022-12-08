@@ -10,8 +10,11 @@ import { HiOutlineDownload } from "react-icons/hi";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FcVlc } from "react-icons/fc";
 import Loading from "../../components/small-components/Loading";
+import { BsFillPlayFill } from "react-icons/bs";
 function StreamingPage() {
   const router = useRouter();
+
+  const [isExternalPlayer, setIsExternalPlayer] = React.useState(true);
   // const { episodeId } = router.query;
 
   // get the search id from the url with javascript
@@ -50,31 +53,50 @@ function StreamingPage() {
       {isLoading && <Loading />}
       {data && (
         <div className=" lg:flex lg:space-x-4">
-          <div className=" w-full max-w-screen-xl">
-            <VideoPlayer videoSource={data?.sources[0].file} />
+          <div className=" w-full overflow-hidden max-w-screen-xl">
+            {isExternalPlayer ? (
+              <iframe
+                className=" overflow-hidden   aspect-video w-full h-full"
+                src={data.Referer}
+                allowFullScreen
+                frameborder="0"
+              ></iframe>
+            ) : (
+              <VideoPlayer videoSource={data?.sources[0].file} />
+            )}
+
             <div className=" mt-5">
               <h3 className=" capitalize ">{episodeId}</h3>
             </div>
           </div>
 
           <div className=" mt-5 lg:mt-0 space-y-4">
-            <PrimaryButton
-              icon={<HiOutlineDownload />}
-              sub="Download option available"
-              onClick={handleExternalPlayer}
-            >
-              Open video in External player (Browser)
-            </PrimaryButton>
+            {isExternalPlayer ? (
+              <PrimaryButton
+                icon={<BsFillPlayFill />}
+                onClick={() => setIsExternalPlayer(!isExternalPlayer)}
+              >
+                Use Internal player
+              </PrimaryButton>
+            ) : (
+              <PrimaryButton
+                icon={<HiOutlineDownload />}
+                sub="Download option available"
+                onClick={() => setIsExternalPlayer(!isExternalPlayer)}
+              >
+                Use External player
+              </PrimaryButton>
+            )}
 
             <PrimaryButton
               icon={<BsFillPlayCircleFill />}
               onClick={handleMxPlayer}
-              sub="Android"
+              sub="Android (Experimental)"
             >
               Open in MX Player
             </PrimaryButton>
             <PrimaryButton
-              sub="Android"
+              sub="Android (Experimental)"
               icon={<FcVlc />}
               onClick={handleVLCPlayer}
             >

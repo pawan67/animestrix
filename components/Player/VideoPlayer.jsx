@@ -30,9 +30,12 @@ const VideoPlayer = ({ videoSource }) => {
       fluid: true,
       muted: false,
       responsive: true,
+      poster: "https://i.imgur.com/xO0ViM0.png",
+      liveui: true,
+      playbackRates: [0.5, 1, 1.5, 2],
       sources: {
         src: videoSource,
-        type: "application/x-mpegURL",
+        type: "application/x-mpegURL ",
       },
     };
 
@@ -54,7 +57,7 @@ const VideoPlayer = ({ videoSource }) => {
   }, []);
 
   return (
-    <div className="video-player-hls">
+    <div className="video-player-hls alignfull">
       <div data-vjs-player>
         <video
           id="videoPlayerHLS"
