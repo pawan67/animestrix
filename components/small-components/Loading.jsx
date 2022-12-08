@@ -8,10 +8,10 @@ function Loading() {
       <div className=" text-center ">
         <img
           className=" max-w-[200px] aspect-square object-cover"
-          src={`/images/loading/${randomNum}.gif`}
+          src={`/images/loading/1.gif`}
           alt=""
         />
-        <div className=" font-semibold   mt-3 animate-pulse">loading...</div>
+        {/* <div className=" font-semibold   mt-3 animate-pulse">loading...</div> */}
       </div>
     </div>
   );
