@@ -38,7 +38,7 @@ function AnimeDetailsPage({ data }) {
   return (
     <>
       <Head>
-        <title>{data?.animeTitle}</title>
+        <title>{data?.animeTitle + " - Animestrix "}</title>
         <meta name="description" content={data?.synopsis} />
         <meta name="keywords" content={data?.genres} />
         <meta name="author" content="consumet" />
