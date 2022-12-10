@@ -5,16 +5,30 @@ import Card from "../components/small-components/Card";
 import Loading from "../components/small-components/Loading";
 import { getPopularAnime } from "../src/handlers";
 
-const Home = () => {
-  const { data, isLoading, isError, error } = useQuery(
-    "popularAnime",
-    getPopularAnime
-  );
+
+export async function getServerSideProps() {
+  const res = await fetch("https://gogoanime.consumet.org/popular");
+
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
+
+const Home = ({ data }) => {
+  console.log(data);
+  // const { data, isLoading, isError, error } = useQuery(
+  //   "popularAnime",
+  //   getPopularAnime
+  // );
 
   return (
     <MainLayout>
-      {isLoading && <Loading />}
-      {isError && <div>Something went wrong</div>}
+      {/* {isLoading && <Loading />}
+      {isError && <div>Something went wrong</div>} */}
 
       {data && (
         <>

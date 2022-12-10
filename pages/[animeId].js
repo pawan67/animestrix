@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 import { useQuery } from "react-query";
@@ -6,25 +7,54 @@ import MainLayout from "../components/layout/MainLayout";
 import Loading from "../components/small-components/Loading";
 import { getAnimeDetails } from "../src/handlers";
 
-function AnimeDetailsPage() {
+export const getServerSideProps = async (context) => {
+  const { animeId } = context.query;
+
+  const res = await fetch(
+    `https://gogoanime.consumet.org/anime-details/${animeId}`
+  );
+
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+function AnimeDetailsPage({ data }) {
   const router = useRouter();
   // const { animeId } = router.query;
 
   // get the anime id from the url with javascript
-  const animeId = window.location.pathname.split("/")[1];
+  // const animeId = window.location.pathname.split("/")[1];
 
-  const { data, isLoading, isError, error } = useQuery("animeDetails", () =>
-    getAnimeDetails(animeId)
-  );
+  // const { data, isLoading, isError, error } = useQuery("animeDetails", () =>
+  //   getAnimeDetails(animeId)
+  // );
 
   console.log(data);
   return (
-    <MainLayout>
-      {isLoading && <Loading />}
-      {isError && <div>Something went wrong</div>}
+    <>
+      <Head>
+        <title>{data?.animeTitle}</title>
+        <meta name="description" content={data?.synopsis} />
+        <meta name="keywords" content={data?.genres} />
+        <meta name="author" content="consumet" />
 
-      {data && <AnimeDetails data={data} />}
-    </MainLayout>
+        <meta property="og:title" content={data?.animeTitle} />
+        <meta property="og:description" content={data?.synopsis} />
+        <meta property="og:image" content={data?.animeImg} />
+        
+      </Head>
+      <MainLayout>
+        {/* {isLoading && <Loading />}
+      {isError && <div>Something went wrong</div>} */}
+
+        {data && <AnimeDetails data={data} />}
+      </MainLayout>
+    </>
   );
 }
 

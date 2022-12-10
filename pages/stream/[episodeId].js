@@ -11,7 +11,24 @@ import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FcVlc } from "react-icons/fc";
 import Loading from "../../components/small-components/Loading";
 import { BsFillPlayFill } from "react-icons/bs";
-function StreamingPage() {
+
+export const getServerSideProps = async (context) => {
+  const { episodeId } = context.query;
+
+  const res = await fetch(
+    `https://gogoanime.consumet.org/vidcdn/watch/${episodeId}`
+  );
+
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+function StreamingPage({ data }) {
   const router = useRouter();
 
   const [isExternalPlayer, setIsExternalPlayer] = React.useState(true);
@@ -25,9 +42,9 @@ function StreamingPage() {
   //   return <MainLayout>loading...</MainLayout>;
   // }
 
-  const { data, isLoading, isError, error } = useQuery("details", () =>
-    getStreamLink(episodeId)
-  );
+  // const { data, isLoading, isError, error } = useQuery("details", () =>
+  //   getStreamLink(episodeId)
+  // );
 
   console.log(data);
 
@@ -50,7 +67,7 @@ function StreamingPage() {
   };
   return (
     <MainLayout>
-      {isLoading && <Loading />}
+      {/* {isLoading && <Loading />} */}
       {data && (
         <div className=" lg:flex lg:space-x-4">
           <div className=" alignfull w-full overflow-hidden max-w-screen-xl">
@@ -64,7 +81,7 @@ function StreamingPage() {
             ) : (
               <VideoPlayer videoSource={data?.sources[0].file} />
             )}
-            
+
             <div className="  hidden sm:block mt-5">
               <h3 className="  capitalize ">{episodeId}</h3>
             </div>
