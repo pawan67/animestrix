@@ -27,7 +27,6 @@ function SearchPage({ data }) {
   // const { searchId } = router.query;
 
   // get the search id from the url with javascript
-  
 
   console.log(data);
   // if (!searchId) {
@@ -42,7 +41,7 @@ function SearchPage({ data }) {
   //   getAnimeSearch(searchId)
   // );
   return (
-    <MainLayout>
+    <MainLayout >
       {/* {isLoading && <Loading />}
       {isError && <div>Something went wrong</div>} */}
 
@@ -52,9 +51,7 @@ function SearchPage({ data }) {
             <h1 className=" text-2xl font-bold">Searched Results</h1>
 
             {data.length === 0 && (
-              <div className=" mt-10 text-2xl ">
-                No Results Found
-              </div>
+              <div className=" mt-10 text-2xl ">No Results Found</div>
             )}
           </div>
           <div className=" mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">

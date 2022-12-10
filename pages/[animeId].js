@@ -46,9 +46,8 @@ function AnimeDetailsPage({ data }) {
         <meta property="og:title" content={data?.animeTitle} />
         <meta property="og:description" content={data?.synopsis} />
         <meta property="og:image" content={data?.animeImg} />
-        
       </Head>
-      <MainLayout>
+      <MainLayout useHead={false}>
         {/* {isLoading && <Loading />}
       {isError && <div>Something went wrong</div>} */}
 
