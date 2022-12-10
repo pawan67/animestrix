@@ -18,6 +18,17 @@ function Footer() {
         <div>
           <Logo />
           <p>minimal anime streaming site.</p>
+          <p className=" font-extralight ">
+            made by
+            <a
+              className="  underline ml-1 "
+              target="_blank"
+              href="https://pawan67.vercel.app"
+              rel="noreferrer"
+            >
+              pawan67
+            </a>
+          </p>
         </div>
       </div>
     </footer>
