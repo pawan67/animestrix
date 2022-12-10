@@ -3,6 +3,9 @@ import Logo from "../small-components/Logo";
 import SearchInput from "../small-components/SearchInput";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
+import { BiSearchAlt } from "react-icons/bi";
+import { CgSearch } from "react-icons/cg";
+import { motion } from "framer-motion";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const randomNum = Math.floor(Math.random() * 6) + 1;
@@ -19,23 +22,17 @@ function Header() {
           {isMenuOpen ? (
             <IoClose onClick={() => setIsMenuOpen(false)} />
           ) : (
-            <HiMenuAlt4 onClick={() => setIsMenuOpen(true)} />
+            <CgSearch onClick={() => setIsMenuOpen(true)} />
           )}
         </div>
       </div>
 
       <div
-        className={` bg-primary/90 backdrop-blur-md transition-all pt-24 p-5 duration-500    z-20 fixed h-[100vh] rounded-b-xl  ${
+        className={` bg-primary/90 backdrop-blur-md transition-all pt-24 p-5     z-20 fixed h-[19vh] rounded-b-xl  ${
           isMenuOpen ? "top-0" : "-top-full"
         }  w-screen `}
       >
         <SearchInput />
-
-        <img
-          className="  w-full sm:hidden  mt-5"
-          src={`/images/loading/${randomNum}.gif`}
-          alt=""
-        />
       </div>
     </>
   );
