@@ -4,8 +4,11 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import React from "react";
 import MainLayout from "../components/layout/MainLayout";
 import Loading from "../components/small-components/Loading";
+import ReactGA from "react-ga";
 
 import nprogress from "nprogress";
+
+ReactGA.initialize("G-PQCH40ZGNT");
 
 import Router from "next/router";
 Router.events.on("routeChangeStart", nprogress.start);

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "react-query";
 import MainLayout from "../components/layout/MainLayout";
 import Card from "../components/small-components/Card";
 import Loading from "../components/small-components/Loading";
 import SearchInput from "../components/small-components/SearchInput";
+import ReactGA from "react-ga";
 import { getPopularAnime } from "../src/handlers";
 
 export async function getServerSideProps() {
@@ -19,11 +20,9 @@ export async function getServerSideProps() {
 }
 
 const Home = ({ data }) => {
-  console.log(data);
-  // const { data, isLoading, isError, error } = useQuery(
-  //   "popularAnime",
-  //   getPopularAnime
-  // );
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  });
 
   return (
     <MainLayout>

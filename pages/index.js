@@ -1,10 +1,16 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect } from "react";
 import LandingPage from "../components/LandingPage";
 
 import styles from "../styles/Home.module.css";
 
+import ReactGA from "react-ga";
+
 export default function Home() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  });
   return (
     <div>
       <Head>
