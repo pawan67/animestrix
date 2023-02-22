@@ -10,7 +10,7 @@ export const getServerSideProps = async (context) => {
   const { searchId } = context.query;
 
   const res = await fetch(
-    `https://gogoanime.consumet.org/search?keyw=${searchId}`
+    `https://webdis-x51w.onrender.com/search?keyw=${searchId}`
   );
 
   const data = await res.json();
@@ -41,7 +41,7 @@ function SearchPage({ data }) {
   //   getAnimeSearch(searchId)
   // );
   return (
-    <MainLayout >
+    <MainLayout>
       {/* {isLoading && <Loading />}
       {isError && <div>Something went wrong</div>} */}
 

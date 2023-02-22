@@ -16,7 +16,7 @@ export const getServerSideProps = async (context) => {
   const { episodeId } = context.query;
 
   const res = await fetch(
-    `https://gogoanime.consumet.org/vidcdn/watch/${episodeId}`
+    `https://webdis-x51w.onrender.com/vidcdn/watch/${episodeId}`
   );
 
   const data = await res.json();
