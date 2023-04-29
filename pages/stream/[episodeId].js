@@ -13,10 +13,10 @@ import Loading from "../../components/small-components/Loading";
 import { BsFillPlayFill } from "react-icons/bs";
 
 export const getServerSideProps = async (context) => {
-  const { episode } = context.query;
+  const { episodeId } = context.query;
 
   const res = await fetch(
-    `https://webdis-x51w.onrender.com/vidcdn/watch/${episode}`
+    `https://webdis-x51w.onrender.com/vidcdn/watch/${episodeId}`
   );
 
   const data = await res.json();
@@ -24,12 +24,12 @@ export const getServerSideProps = async (context) => {
   return {
     props: {
       data,
-      episode
+      episodeId
     },
   };
 };
 
-function StreamingPage({ data, episode }) {
+function StreamingPage({ data, episodeId }) {
   const router = useRouter();
 
   const [isExternalPlayer, setIsExternalPlayer] = React.useState(true);
@@ -37,7 +37,7 @@ function StreamingPage({ data, episode }) {
 
   // get the search id from the url with javascript
 
-  const episodeId = episode;
+  const finalEpisodeId = episodeId;
 
   // if (!episodeId) {
   //   return <MainLayout>loading...</MainLayout>;
@@ -84,11 +84,11 @@ function StreamingPage({ data, episode }) {
             )}
 
             <div className="  hidden sm:block mt-5">
-              <h3 className="  capitalize ">{episodeId}</h3>
+              <h3 className="  capitalize ">{finalEpisodeId}</h3>
             </div>
           </div>
           <div className=" sm:hidden  mt-5">
-            <h3 className=" capitalize ">{episodeId}</h3>
+            <h3 className=" capitalize ">{finalEpisodeId}</h3>
           </div>
 
           <div className=" mt-5 lg:mt-0 space-y-4">
